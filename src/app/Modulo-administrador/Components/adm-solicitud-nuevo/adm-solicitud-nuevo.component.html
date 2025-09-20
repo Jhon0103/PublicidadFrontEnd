@@ -1,0 +1,59 @@
+<div class="contenedor-crear">
+  <mat-card class="card-formulario mat-elevation-z8">
+    <h2 class="titulo-formulario">Registro de Solicitud</h2>
+
+    <form [formGroup]="form" (ngSubmit)="registrarSolicitud()">
+      <div class="form-grid">
+        <mat-form-field appearance="outline">
+          <mat-label>Proyecto</mat-label>
+          <input matInput formControlName="proyecto" placeholder="Nombre del proyecto" />
+          <mat-error *ngIf="form.get('proyecto')?.hasError('required')">Requerido</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Tipo de Solicitud</mat-label>
+          <mat-select formControlName="idTipoSolicitud">
+            <mat-option *ngFor="let tipo of tipoSolicitud" [value]="tipo.idTipoSolicitud">{{ tipo.tipoSolicitud }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get('idTipoSolicitud')?.hasError('required')">Requerido</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Fecha Estimada</mat-label>
+          <input matInput type="date" formControlName="fechaEstimadaUsuario" />
+          <mat-error *ngIf="form.get('fechaEstimadaUsuario')?.hasError('required')">Requerido</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Fecha Estimada Entrega</mat-label>
+          <input matInput type="date" formControlName="fechaEstimadaEntrega" />
+          <mat-error *ngIf="form.get('fechaEstimadaEntrega')?.hasError('required')">Requerido</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="descripcion-campo">
+          <mat-label>Descripción</mat-label>
+          <textarea matInput formControlName="descripcion" rows="4" placeholder="Describe tu solicitud..."></textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="descripcion-campo">
+          <mat-label>Comentarios</mat-label>
+          <textarea matInput formControlName="comentarios" rows="4" placeholder="Comentarios acerca de la solicitud"></textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Respuesta</mat-label>
+          <mat-select formControlName="idEstado">
+            <mat-option *ngFor="let estado of listaEstado" [value]="estado.idEstadoSolicitud">{{ estado.estado }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get('idEstado')?.hasError('required')">Requerido</mat-error>
+        </mat-form-field>
+
+      </div>
+
+      <div class="acciones">
+        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Guardar</button>
+        <button mat-button type="button" (click)="cancelar()">Cancelar</button>
+      </div>
+    </form>
+  </mat-card>
+</div>

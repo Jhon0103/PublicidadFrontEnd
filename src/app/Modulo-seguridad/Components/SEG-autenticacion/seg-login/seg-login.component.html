@@ -1,0 +1,47 @@
+<div class="registro-wrapper">
+  <!-- Header superior -->
+  <header class="header">
+    <div class="logo-nombre">
+      <img src="assets/Imagenes/logo.png" style="width: 90px; height: auto;" alt="Logo" class="logo" />
+      <h1 class="nombre-empresa">Inversiones Ferretera Buenaventura S.A.C.</h1>
+    </div>
+    <button mat-stroked-button class="btn-login" routerLink="/registra-Solicitud">Registrate</button>
+  </header>
+
+  <div class="contenedor-principal">
+
+    <div class="fondo-izquierdo">
+      <img src="assets/Imagenes/login.png" alt="Formulario fondo" class="img-fondo" />
+    </div>
+
+
+    <div class="contenedor-form">
+      <mat-card class="card-formulario mat-elevation-z8">
+
+        <h2 class="titulo-formulario">Iniciar Sesión</h2>
+
+        <form [formGroup]="formularioLogin" (ngSubmit)="login()">
+          <div class="form-grid">
+            <mat-form-field appearance="outline">
+              <mat-label>Usuario</mat-label>
+              <input matInput formControlName="login" placeholder="Usuario" />
+              <mat-icon matSuffix>person</mat-icon>
+              <mat-error *ngIf="formularioLogin.get('login')?.hasError('required')">Requerido</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Contraseña</mat-label>
+              <input type="Password" matInput formControlName="clave" placeholder="Contraseña" />
+              <mat-icon matSuffix>lock</mat-icon>
+              <mat-error *ngIf="formularioLogin.get('clave')?.hasError('required')">Requerido</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="acciones">
+            <button mat-raised-button color="primary" type="submit" [disabled]="formularioLogin.invalid">Ingresar</button>
+          </div>
+        </form>
+      </mat-card>
+    </div>
+  </div>
+</div>

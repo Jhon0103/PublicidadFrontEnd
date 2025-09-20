@@ -1,0 +1,14 @@
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-wrapper {
+  padding: 0.25rem 0 !important;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-flex {
+  height: 60px !important; /* reduce el alto */
+  align-items: center;
+}
+
+::ng-deep .mat-input-element {
+  padding: 0 8px !important;
+  height: 30px;
+  font-size: 14px;
+}
